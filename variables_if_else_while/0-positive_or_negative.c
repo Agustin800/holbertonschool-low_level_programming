@@ -2,12 +2,13 @@
 #include <time.h>
 #include <stdlib.h>
 
-/** main - do things
+/**
+	 * main - do things
  * Return: 0
  *
  */
 
-int main (void)
+int main(void)
 {
 	int n;
 
@@ -28,7 +29,6 @@ int main (void)
 	{
 		printf("%d is positive\n", n);
 	}
-
 
 	return (0);
 
