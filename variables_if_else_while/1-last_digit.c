@@ -4,7 +4,7 @@
 
 /**
  * main - do things
- * return: 0
+ * Return: 0
  *
  */
 
