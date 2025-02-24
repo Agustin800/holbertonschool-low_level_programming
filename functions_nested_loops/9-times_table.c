@@ -14,7 +14,6 @@ void times_table(void)
 		{
 			producto = line * num;
 
-			/* Imprimir el número */
 			if (producto >= 10)
 			{
 				_putchar((producto / 10) + '0');
@@ -25,18 +24,17 @@ void times_table(void)
 				_putchar(producto + '0');
 			}
 
-			/* Imprimir la coma y los espacios (excepto en la última columna) */
 			if (num != 9)
 			{
 				_putchar(',');
 				_putchar(' ');
 
-				if (line * (num + 1) < 10) /* Asegurar alineación */
+				if (line * (num + 1) < 10)
 				{
 					_putchar(' ');
 				}
 			}
 		}
-		_putchar('\n'); /* Salto de línea al final de cada fila */
+		_putchar('\n');
 	}
 }
