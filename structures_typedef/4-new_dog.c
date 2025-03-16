@@ -1,6 +1,38 @@
 #include "dog.h"
-#include <string.h>
 #include <stdlib.h>
+
+/**
+ * _strcpy - Copies a string to a newly allocated memory space
+ * @dest: Destination buffer
+ * @src: Source string
+ * Return: Pointer to dest
+ */
+char *_strcpy(char *dest, char *src)
+{
+	int i = 0;
+
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
+/**
+ * _strlen - Computes the length of a string
+ * @s: The string
+ * Return: The length of the string
+ */
+int _strlen(char *s)
+{
+	int len = 0;
+
+	while (s[len])
+		len++;
+	return (len);
+}
 
 /**
  *new_dog -do things
@@ -21,14 +53,14 @@ dog_t *new_dog(char *name, float age, char *owner)
 	if (dog == NULL)
 		return (NULL);
 
-	dog->name = malloc(strlen(name) + 1);
+	dog->name = malloc(_strlen(name) + 1);
 	if (dog->name == NULL)
 	{
 		free(dog);
 		return (NULL);
 	}
 
-	dog->owner = malloc(strlen(owner) + 1);
+	dog->owner = malloc(_strlen(owner) + 1);
 	if (dog->owner == NULL)
 	{
 		free(dog->name);
@@ -36,8 +68,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 		return (NULL);
 	}
 
-	strcpy(dog->name, name);
-	strcpy(dog->owner, owner);
+	_strcpy(dog->name, name);
+	_strcpy(dog->owner, owner);
 	dog->age = age;
 
 	return (dog);
