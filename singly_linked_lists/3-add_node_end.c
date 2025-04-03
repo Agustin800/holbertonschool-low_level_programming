@@ -3,6 +3,21 @@
 #include <stdlib.h>
 
 /**
+* _strlen - do things
+* @s: Pointer to the string
+*Return: Length of the string
+*/
+
+size_t _strlen(const char *str)
+{
+	size_t len = 0;
+
+	while (str[len] != '\0')
+		len++;
+	return (len);
+}
+
+/**
 * add_node_end - do things
 * @head: Double pointer to the head of the list
 * @str: String to duplicate and add to the new node
@@ -11,36 +26,26 @@
 
 list_t *add_node_end(list_t **head, const char *str)
 {
-	list_t *new_mode, *temp;
+	list_t *new_node;
+	list_t *temp = *head;
 
-	if (!str)
+	new_node = malloc(sizeof(list_t));
+	if (!new_node)
 		return (NULL);
 
-	new_mode = malloc(sizeof(list_t));
-	if (!new_mode)
-		return (NULL);
-
-	new_mode->str = malloc(strlen(str + 1));
-	if (!new_mode->str)
-	{
-		free(new_mode);
-		return (NULL);
-	}
-	strcpy(new_mode->str, str);
-
-	new_mode->len = strlen(str);
-	new_mode->next = NULL;
+	new_node->str = strdup(str);
+	new_node->len = _strlen(str);
+	new_node->next = NULL;
 
 	if (*head == NULL)
 	{
-		*head = new_mode;
+		*head = new_node;
+		return (new_node);
 	}
-	else
-	{
-		temp = *head;
-			while (temp->next)
-				temp = temp->next;
-		temp->next = new_mode;
-	}
-	return (new_mode);
+	while (temp->next)
+		temp = temp->next;
+
+	temp->next = new_node;
+
+	return (new_node);
 }
